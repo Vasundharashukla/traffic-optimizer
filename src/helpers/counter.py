@@ -3,9 +3,8 @@ import numpy as np
 import Vehicle
 import time
 
-value = 1.8
 videos = ['./src/static/videos/1t.MP4', './src/static/videos/2t.MP4', './src/static/videos/3.MP4', './src/static/videos/4.MP4']
-
+value = 1.8
 
 video = int(input())
 cnt_up = 0
