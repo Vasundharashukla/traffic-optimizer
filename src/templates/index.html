@@ -53,20 +53,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
-    var ajaxCaller = function(){
+    var ajaxCaller = function() {
         $.ajax({
             type: 'GET',
             url: '/get-signal-time',
-            success: function(res){
+            success: function(res) {
                 res = res["result"];
-                $('.time').each(function(x){
+                $('.time').each(function(x) {
                     $(this).text(res[x]);
                 });
             }
         });
     }
-    
+
     setInterval(ajaxCaller, 5000);
-    
 </script>
+
 </html>
