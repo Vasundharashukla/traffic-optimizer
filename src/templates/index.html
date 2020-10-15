@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/png" href="./static/images/logo.png">
     <meta name="description" content="happy birthday love">
     <meta name="author" content="">
     <link rel="stylesheet" href="">
@@ -15,29 +16,37 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
         body {
-        background: url('../static/images/background3.jpg') no-repeat center center/cover;
-
+            background: url('../static/images/background3.jpg') no-repeat center center/cover;
+            font-family: 'Nunito';
+            overflow-x: hidden;
         }
+        
+        .head {
+            font-size: 60px;
+        }
+
         .card {
-            background:#333;
-            color:#fff;
-            align-items:center;
-            opacity:0.9;
+            background: #333;
+            color: #fff;
+            opacity: 0.9;
+        }
 
-        }
         .card:hover {
-            background:#777;
-            font-size:20px;
+            background: #777;
+            font-size: 20px;
         }
+
     </style>
 </head>
 
 <body>
-
+    
+    <div class="text-center pt-4 text-light">
+        <h1 class="head">Traffic Optimizer</h1>
+    </div>
     <div class="card-deck pt-4 px-2">
         <div class="card" style="">
-            <video width="320" height="240" controls muted>
-                <source src="../static/videos/1t.mp4" type="video/mp4"></video>
+            <img class="card-img-top px-2 py-2" src="{{url_for('router.video_stream_one')}}" alt="" height="300">
             <div class="card-body">
                 <h5 class="card-title">Signal 1</h5>
                 <p class="card-text">
@@ -46,23 +55,21 @@
             </div>
         </div>
         <div class="card">
-
-            <video width="320" height="240" controls muted><source src="../static/videos/2t.mp4" type="video/mp4"></video>
-
+            <img class="card-img-top px-2 py-2" src="{{url_for('router.video_stream_two')}}" alt="" height="300">
             <div class="card-body">
                 <h5 class="card-title">Signal 2</h5>
                 <p class="card-text"><b>Time alloted to signal: </b><span class="time">--</span> minutes</p>
             </div>
         </div>
         <div class="card">
-             <video width="320" height="240" controls muted><source src="../static/videos/3t.mp4" type="video/mp4"></video>
+            <img class="card-img-top px-2 py-2" src="{{url_for('router.video_stream_three')}}" alt="" height="300">
             <div class="card-body">
                 <h5 class="card-title">Signal 3</h5>
                 <p class="card-text"><b>Time alloted to signal: </b><span class="time">--</span> minutes</p>
             </div>
         </div>
         <div class="card">
-             <video width="320" height="240" controls muted><source src="../static/videos/4t.mp4" type="video/mp4"></video>
+            <img class="card-img-top px-2 py-2" src="{{url_for('router.video_stream_four')}}" alt="" height="300">
             <div class="card-body">
                 <h5 class="card-title">Signal 4</h5>
                 <p class="card-text"><b>Time alloted to signal: </b><span class="time">--</span> minutes</p>
@@ -70,18 +77,18 @@
         </div>
     </div>
 </body>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
-    var ajaxCaller = function(){
+    var ajaxCaller = function() {
         $.ajax({
             type: 'GET',
             url: '/get-signal-time',
-            success: function(res){
+            success: function(res) {
                 res = res["result"];
-                $('.time').each(function(x){
+                $('.time').each(function(x) {
                     $(this).text(res[x]);
                 });
             }
