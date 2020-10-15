@@ -24,25 +24,36 @@
         .head {
             font-size: 60px;
         }
-
+        
         .card {
             background: #333;
             color: #fff;
             opacity: 0.9;
         }
-
+        
         .card:hover {
             background: #777;
             font-size: 20px;
         }
-
+        
+        .heading {
+            text-align: center;
+            color: #fff;
+        }
+        
+        .heading h1 {
+            font-size: 50px;
+        }
+        
+        .heading span {
+            color: black;
+        }
     </style>
 </head>
 
 <body>
-    
-    <div class="text-center pt-4 text-light">
-        <h1 class="head">Traffic Optimizer</h1>
+    <div class="heading pt-4">
+        <h1> Traffic<span> Optimizer</span></h1>
     </div>
     <div class="card-deck pt-4 px-2">
         <div class="card" style="">
@@ -96,7 +107,6 @@
     }
 
     setInterval(ajaxCaller, 5000);
-
 </script>
 
 </html>
