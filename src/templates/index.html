@@ -32,13 +32,13 @@
             font-size: 60px;
         }
 
-        .card {
+        .card-deck .card {
             background: #333;
             color: #fff;
             opacity: 0.9;
         }
 
-        .card:hover {
+        .card-deck .card:hover {
             background: #777;
         }
 
@@ -146,25 +146,86 @@
                         </div>
                     </div>
                 </div>
+                <div class="card mx-2 mt-4 mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-area mr-1"></i>
+                        Chart
+                    </div>
+                    <div class="card-body">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
             </main>
+
         </div>
+
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: ['Signal 1', 'Signal 2', 'Signal 3', 'Signal 4', ],
+                datasets: [{
+                        label: 'My First dataset',
+                        backgroundColor: 'transparent',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [0,0,0,0]
+                    },
+                    {
+                        label: 'My Second dataset',
+                        backgroundColor: 'transparent',
+                        borderColor: 'rgb(255, 49, 13)',
+                        data: [0,0,0,0]
+                    }
+                ]
+            },
+        });
+
+        var divider = function(x) {
+            return x / 10;
+        }
+
         var ajaxCaller = function() {
             $.ajax({
                 type: 'GET',
                 url: '/get-signal-time',
                 success: function(res) {
-                    res = res["result"];
                     $('.time').each(function(x) {
-                        $(this).text(res[x]);
+                        $(this).text(res["time"][x]);
                     });
-                }
+
+                    var timeline = res["time"];
+                    var count = res["count"];
+
+                    var datasets = {
+                        labels: ['Signal 1', 'Signal 2', 'Signal 3', 'Signal 4', ],
+                        datasets: [{
+                                label: 'Time Alloted to Signal',
+                                backgroundColor: 'transparent',
+                                borderColor: 'rgb(255, 99, 132)',
+                                data: timeline
+                            },
+                            {
+                                label: 'Traffic count divided by 10',
+                                backgroundColor: 'transparent',
+                                borderColor: 'rgb(255, 49, 13)',
+                                data: count
+                            }
+                        ]
+                    };
+                    chart.config.data = datasets;
+                    console.log(chart.config);
+                    chart.update();
+                },
             });
         }
 

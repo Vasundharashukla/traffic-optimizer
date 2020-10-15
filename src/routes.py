@@ -243,4 +243,4 @@ def video_stream_four():
 
 @router.route("/get-signal-time", methods=["GET"])
 def get_signal_time():
-    return jsonify(result=get_time())
+    return jsonify(time=get_time(), count=result)
