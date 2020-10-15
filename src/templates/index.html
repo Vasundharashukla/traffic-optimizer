@@ -12,13 +12,32 @@
     <link href="https://fonts.googleapis.com/css?family=Coda+Caption:800&display=swap" rel="stylesheet">
     <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        body {
+        background: url('../static/images/background3.jpg') no-repeat center center/cover;
+
+        }
+        .card {
+            background:#333;
+            color:#fff;
+            align-items:center;
+            opacity:0.9;
+
+        }
+        .card:hover {
+            background:#777;
+            font-size:20px;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="card-deck pt-4 px-2">
-        <div class="card">
-            <img src="{{ url_for('router.video_stream_one') }}" height="300">
+        <div class="card" style="">
+            <video width="320" height="240" controls muted>
+                <source src="../static/videos/1t.mp4" type="video/mp4"></video>
             <div class="card-body">
                 <h5 class="card-title">Signal 1</h5>
                 <p class="card-text">
@@ -27,21 +46,23 @@
             </div>
         </div>
         <div class="card">
-            <img src="{{ url_for('router.video_stream_two') }}" height="300">
+
+            <video width="320" height="240" controls muted><source src="../static/videos/2t.mp4" type="video/mp4"></video>
+
             <div class="card-body">
                 <h5 class="card-title">Signal 2</h5>
                 <p class="card-text"><b>Time alloted to signal: </b><span class="time">--</span> minutes</p>
             </div>
         </div>
         <div class="card">
-            <img src="{{ url_for('router.video_stream_three') }}" height="300">
+             <video width="320" height="240" controls muted><source src="../static/videos/3t.mp4" type="video/mp4"></video>
             <div class="card-body">
                 <h5 class="card-title">Signal 3</h5>
                 <p class="card-text"><b>Time alloted to signal: </b><span class="time">--</span> minutes</p>
             </div>
         </div>
         <div class="card">
-            <img src="{{ url_for('router.video_stream_four') }}" height="300">
+             <video width="320" height="240" controls muted><source src="../static/videos/4t.mp4" type="video/mp4"></video>
             <div class="card-body">
                 <h5 class="card-title">Signal 4</h5>
                 <p class="card-text"><b>Time alloted to signal: </b><span class="time">--</span> minutes</p>
@@ -49,17 +70,18 @@
         </div>
     </div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
-    var ajaxCaller = function() {
+    var ajaxCaller = function(){
         $.ajax({
             type: 'GET',
             url: '/get-signal-time',
-            success: function(res) {
+            success: function(res){
                 res = res["result"];
-                $('.time').each(function(x) {
+                $('.time').each(function(x){
                     $(this).text(res[x]);
                 });
             }
@@ -67,6 +89,7 @@
     }
 
     setInterval(ajaxCaller, 5000);
+
 </script>
 
 </html>
