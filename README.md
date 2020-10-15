@@ -1,7 +1,5 @@
 # traffic-optimizer
 
-## Problem Statement
-
 - Traffic signal timings in a road network can not only affect total user travel time and total amount of traffic emissions in the network but also create an inequity problem in terms of the change in travel costs of users traveling between different locations .Traffic congestion in peak hours in major cities of Delhi, Mumbai ,Kolkata and Bengaluru costs the economy 1.47 lakh crores annually.
 
 - Due to heavy amount of traffic ambulances must suffer a lot. Every minute is critical for a patient and getting stuck in traffic for long hours further deteriorates their condition.
