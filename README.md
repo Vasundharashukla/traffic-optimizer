@@ -23,3 +23,5 @@ The project has been developed by -
 
 - [Vasundhara Shukla](https://github.com/vasundharashukla)
 - [Hemant Jindgar](https://github.com/HemantJindgar)
+- [Raghav Jaju](https://github.com/raghavjaju)
+- [Niharika Singh](https://github.com/niharika2026)
